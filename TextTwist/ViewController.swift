@@ -18,6 +18,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var fourLetterWord: UITextView!
     @IBOutlet var fiveLetterWord: UITextView!
     @IBOutlet var correctOrNotCorrect: UILabel!
+    @IBOutlet var wordTextField: UITextField!
     
     @IBOutlet var sixLetterWord: UITextView!
     @IBOutlet var wordLabel: UILabel!
@@ -25,6 +26,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        wordTextField.delegate = self
         startOver()
 //        amountOfWords = randomElememt.wordCount
         

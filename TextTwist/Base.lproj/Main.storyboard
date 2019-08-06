@@ -119,6 +119,7 @@
                         <outlet property="sixLetterWord" destination="JGb-QX-PWR" id="dWg-k9-aLU"/>
                         <outlet property="threeLetterWord" destination="zjN-OB-r2f" id="SwO-wl-QQT"/>
                         <outlet property="wordLabel" destination="cF9-uF-iBp" id="rVk-Mo-vxO"/>
+                        <outlet property="wordTextField" destination="4jw-py-O44" id="uqY-rl-ZT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
