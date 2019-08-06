@@ -36,34 +36,34 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
         return true
     }
-    func startOver(){
+    private func startOver(){
         
         randomElememt = textTwistModel.insertRandomElement()
         amountOfWords = randomElememt.wordCount
         wordLabel.text =  "\(randomElememt.letters.uppercased()): You can make \(randomElememt.wordCount) random words "
         correctOrNotCorrect.text = "Make words from the given Characters"
     }
-    func incrementer(){
+   private func incrementer(){
         amountOfWords -= 1
         wordLabel.text =  "\(randomElememt.letters.uppercased()): You have \(amountOfWords) words left"
     }
     
-    func alreadyGuessed(input:String){
+  private  func alreadyGuessed(input:String){
         correctOrNotCorrect.text = "\(input) has been Guessed already."
     }
-    func correctInput(){
+   private func correctInput(){
         correctOrNotCorrect.text = "Correct"
     }
-    func incorrectInput(){
+   private func incorrectInput(){
         correctOrNotCorrect.text = "Incorrect"
     }
-    func clearTextViews(){
+   private func clearTextViews(){
         threeLetterWord.text = ""
         fourLetterWord.text = ""
         fiveLetterWord.text = ""
         sixLetterWord.text = ""
     }
-    func clearOutTextField(){
+   private func clearOutTextField(){
         wordTextField.text = ""
     }
     
