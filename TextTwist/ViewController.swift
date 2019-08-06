@@ -31,6 +31,11 @@ class ViewController: UIViewController , UITextFieldDelegate {
 //        amountOfWords = randomElememt.wordCount
         
     }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        return true
+    }
     func startOver(){
         
         randomElememt = textTwistModel.insertRandomElement()
@@ -58,6 +63,9 @@ class ViewController: UIViewController , UITextFieldDelegate {
         fiveLetterWord.text = ""
         sixLetterWord.text = ""
     }
+    func clearOutTextField(){
+        wordTextField.text = ""
+    }
     
     @IBAction func word(_ sender: UITextField) {
         
@@ -71,6 +79,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 correctInput()
                 incrementer()
                 threeLetterWord.text += "\(String(describing: sender.text!.lowercased()))\n"
+               // clearTextViews()
             }else{
                 if threeLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
