@@ -8,5 +8,15 @@
 
 import Foundation
 
-class TextTwistModel {
+class TextTwistModel:WordData {
+
+    func insertRandomElement() -> TestTwistInfo{
+       let randomElement = WordData.allInfo.randomElement()!
+        return randomElement
+    }
+    func insertAmountOfWords() -> Int{
+       let amountOfWords = insertRandomElement().wordCount
+        return amountOfWords
+    }
+    
 }
