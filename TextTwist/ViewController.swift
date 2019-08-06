@@ -28,7 +28,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
         super .viewDidLoad()
         wordTextField.delegate = self
         startOver()
-//        amountOfWords = randomElememt.wordCount
+        //        amountOfWords = randomElememt.wordCount
         
     }
     
@@ -36,6 +36,11 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
         return true
     }
+    // this function is used when you resign the first responder.
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        <#code#>
+//    }
+    
     private func startOver(){
         
         randomElememt = textTwistModel.insertRandomElement()
@@ -43,28 +48,25 @@ class ViewController: UIViewController , UITextFieldDelegate {
         wordLabel.text =  "\(randomElememt.letters.uppercased()): You can make \(randomElememt.wordCount) random words "
         correctOrNotCorrect.text = "Make words from the given Characters"
     }
-   private func incrementer(){
+    private func incrementer(){
         amountOfWords -= 1
         wordLabel.text =  "\(randomElememt.letters.uppercased()): You have \(amountOfWords) words left"
     }
     
-  private  func alreadyGuessed(input:String){
+    private  func alreadyGuessed(input:String){
         correctOrNotCorrect.text = "\(input) has been Guessed already."
     }
-   private func correctInput(){
+    private func correctInput(){
         correctOrNotCorrect.text = "Correct"
     }
-   private func incorrectInput(){
-        correctOrNotCorrect.text = "Incorrect"
+    private func incorrectInput(){
+        correctOrNotCorrect.text = "Incorrect. please try again"
     }
-   private func clearTextViews(){
+    private func clearTextViews(){
         threeLetterWord.text = ""
         fourLetterWord.text = ""
         fiveLetterWord.text = ""
         sixLetterWord.text = ""
-    }
-   private func clearOutTextField(){
-        wordTextField.text = ""
     }
     
     @IBAction func word(_ sender: UITextField) {
@@ -78,8 +80,8 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if randomElememt.words.contains(sender.text?.lowercased() ?? "") && !threeLetterWord.text.contains(String(sender.text!.lowercased())){
                 correctInput()
                 incrementer()
-                threeLetterWord.text += "\(String(describing: sender.text!.lowercased()))\n"
-               // clearTextViews()
+                threeLetterWord.text.append("\(sender.text!.lowercased())\n")
+                
             }else{
                 if threeLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
@@ -93,7 +95,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if randomElememt.words.contains(sender.text?.lowercased() ?? "") && !fourLetterWord.text.contains(String(sender.text!.lowercased())){
                 correctInput()
                 incrementer()
-                fourLetterWord.text += "\(String(describing: sender.text!.lowercased()))\n"
+                fourLetterWord.text.append("\(sender.text!.lowercased())\n")
             }else{
                 if fourLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
@@ -106,7 +108,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if randomElememt.words.contains(sender.text?.lowercased() ?? "") && !fiveLetterWord.text.contains(String(sender.text!.lowercased())){
                 correctInput()
                 incrementer()
-                fiveLetterWord.text += "\(String(describing: sender.text!.lowercased()))\n"
+                fiveLetterWord.text.append("\(sender.text!.lowercased())\n")
             }else{
                 if fiveLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
@@ -119,7 +121,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if randomElememt.words.contains(sender.text?.lowercased() ?? "") && !sixLetterWord.text.contains(String(sender.text!.lowercased())){
                 correctInput()
                 incrementer()
-                sixLetterWord.text += "\(String(describing: sender.text!.lowercased()))\n"
+                sixLetterWord.text.append("\(sender.text!.lowercased())\n")
             }else{
                 if sixLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
@@ -132,7 +134,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     
     @IBAction func newGame(_ sender: UIButton) {
-       clearTextViews()
+        clearTextViews()
         startOver()
     }
 }
