@@ -28,18 +28,17 @@ class ViewController: UIViewController , UITextFieldDelegate {
         super .viewDidLoad()
         wordTextField.delegate = self
         startOver()
-        //        amountOfWords = randomElememt.wordCount
-        
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        
-        return true
-    }
-    // this function is used when you resign the first responder.
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        <#code#>
+    //this function allows the user to enter only characters and check if its contained in a string
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if randomElememt.letters.contains(string) || string == ""{
+//           return true
+//        }else{
+//            return false
+//        }
 //    }
+
     
     private func startOver(){
         
@@ -59,8 +58,8 @@ class ViewController: UIViewController , UITextFieldDelegate {
     private func correctInput(){
         correctOrNotCorrect.text = "Correct"
     }
-    private func incorrectInput(){
-        correctOrNotCorrect.text = "Incorrect. please try again"
+    private func incorrectInput(input:String){
+        correctOrNotCorrect.text = "Incorrect. \(input) doesn't exist"
     }
     private func clearTextViews(){
         threeLetterWord.text = ""
@@ -86,7 +85,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 if threeLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
                 }else{
-                    incorrectInput()
+                    incorrectInput(input: sender.text ?? "The value")
                 }
             }
         }
@@ -100,7 +99,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 if fourLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
                 }else{
-                    incorrectInput()
+                    incorrectInput(input: sender.text ?? "The value")
                 }
             }
         }
@@ -113,7 +112,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 if fiveLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
                 }else{
-                    incorrectInput()
+                    incorrectInput(input: sender.text ?? "The value")
                 }
             }
         }
@@ -126,7 +125,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 if sixLetterWord.text.contains(String(sender.text!.lowercased())){
                     alreadyGuessed(input: sender.text!.uppercased())
                 }else{
-                    incorrectInput()
+                    incorrectInput(input: sender.text ?? "The value")
                 }
             }
         }
